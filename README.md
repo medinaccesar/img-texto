@@ -24,8 +24,7 @@ img-texto 1.0.0
 
 argumentos opcionales:
   -h, --help            muestra este mensaje de ayuda y sale
-  -e ARCHIVO, --extraer ARCHIVO
-                        Extrae el texto de la imagen
+  -e ARCHIVO, --extraer ARCHIVO  Extrae el texto de la imagen
   -g, --gui             Se ejecuta el entorno gráfico
   --version             Muestra la versión del programa
 
