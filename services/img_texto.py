@@ -5,9 +5,11 @@ class ImgTexto():
     
     
     def extraer(self,image_path):
-        print(image_path)
-        image = Image.open(image_path)
-        image = Image.open(image_path)
+        
+        if self.es_imagen(image_path):           
+            image = image_path
+        else:  
+            image = Image.open(image_path)
         text = pytesseract.image_to_string(image)
         return text
     
@@ -16,3 +18,6 @@ class ImgTexto():
         cropped_image = image.crop(crop_rectangle)
         text = pytesseract.image_to_string(cropped_image)
         return text
+    
+    def es_imagen(self,obj):
+        return isinstance(obj, Image.Image)
