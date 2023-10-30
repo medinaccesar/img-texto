@@ -4,13 +4,11 @@ import pytesseract
 class ImgTexto():
     
     
-    def extraer(self,image_path):
-        
-        if self.es_imagen(image_path):           
-            image = image_path
-        else:  
-            image = Image.open(image_path)
-        text = pytesseract.image_to_string(image)
+    def extraer(self,imagen):        
+        if not self.es_imagen(imagen):
+            # Se trata de una ruta a la imagen, se abre
+            imagen = Image.open(imagen)
+        text = pytesseract.image_to_string(imagen)        
         return text
     
     def extraer_parte(image_path, crop_rectangle):
