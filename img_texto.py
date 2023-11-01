@@ -1,7 +1,10 @@
 
+
+from gui.gui_frame import Gui
 from services.fichero_service import Fichero
 from utils.espannol_string_argparse import *
 import argparse
+import tkinter as tk
 from services.img_texto import ImgTexto
 from constantes import Configuracion as conf
 
@@ -16,9 +19,9 @@ class Main():
         self._procesar_argumentos(parser)
         
     # Se ejecuta con entorno gráfico
-    def _ejecutar_gui(self):
-        # TODO
-        pass
+    def _ejecutar_gui(self):        
+        gui = Gui() 
+        gui.mainloop()
 
     # Se ejecuta en modo consola
     def _ejecutar_modo_consola(self, args):
