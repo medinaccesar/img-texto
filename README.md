@@ -1,5 +1,5 @@
 # img-texto
-Extractor simple del texto de una imagen. Cuando se ejecuta en modo consola extrae el texto a un archivo. Próximamente: si se ejecuta en modo gráfico se extrae el texto de toda la imagen o de la parte seleccionada a un cuadro de texto, pudiéndose, asimismo, exportar a un archivo.
+Extractor simple del texto de una imagen, permite ejecutarse en modo consola o mediante interfaz gráfica. Cuando se ejecuta en modo consola extrae el texto a un archivo, cuando lo hace en modo gráfico puede extraer el texto de toda la imagen o bien de la parte seleccionada a un cuadro de texto, pudiéndose, asimismo, copiar, cortar, retocar y exportar a un archivo.
 
 # Requisitos
  Python 3.
@@ -33,5 +33,15 @@ Por ejemplo:
 ```
 ## Extraer todo el texto de un archivo de imagen
 python  img_texto.py -e ./rec/prueba.png
-Se ejecuta en modo consola
+Se ejecuta en modo consola. 
+
+Progreso |████████████████████████████████████████| 100% Completo
+
+El texto se ha extraído con éxito en el archivo: 231101_220117_salida.txt
 ```
+
+```
+## Ejecutar en modo gráfico
+python  img_texto.py -g
+```
+
