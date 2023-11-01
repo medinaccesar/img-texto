@@ -1,12 +1,11 @@
 import os
 
-
 class Configuracion:
 
     __slots__ = ()
     NOMBRE_AP = 'img-texto'
-    DESCRIPCION_AP = ' Extractor simple del texto de una imagen.'
-    VERSION = '1.1.0'
+    DESCRIPCION_AP = ' Extractor simple del texto de una imagen'
+    VERSION = '1.2.0'
     CREDITOS = 'César Medina'
     
    
