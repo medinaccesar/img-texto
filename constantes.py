@@ -14,6 +14,7 @@ class Configuracion:
     # Directorio de la aplicación
     DIR_APP = os.path.dirname(os.path.abspath(__file__))   
     DIR_IMA = 'rec'+os.path.sep  
+    DIR_SALIDA = 'salida'+os.path.sep  
     DIR_TXT = DIR_IMA
     NOMBRE_ARCHIVO_TEXTO = 'salida.txt'   
     
