@@ -5,7 +5,7 @@ class Configuracion:
     __slots__ = ()
     NOMBRE_AP = 'img-texto'
     DESCRIPCION_AP = ' Extractor simple del texto de una imagen'
-    VERSION = '1.2.2'
+    VERSION = '1.2.3'
     CREDITOS = 'César Medina'
     
    
