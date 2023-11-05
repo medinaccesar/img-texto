@@ -26,4 +26,11 @@ class Fichero():
             return False       
         return True
     
-   
+    # Si no puede resolver el directorio devuelve uno por defecto
+    def obtener_directorio(self, dir):
+        if os.path.isdir(dir):           
+            return dir        
+        return conf.DIR_DOCUMENTOS + os.path.sep 
+    
+    def obtener_ruta_absoluta(self, dir):
+        return os.path.abspath(dir)
