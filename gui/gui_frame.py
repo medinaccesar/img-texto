@@ -1,4 +1,3 @@
-import os
 import threading
 import tkinter.messagebox as tkmb
 from tkinter import *
@@ -74,34 +73,16 @@ class Gui(Frame):
         descripcion.pack(pady=5)
 
     def addControles(self):
-
-        self.archivo_frame = Frame(self)
-        self.archivo_frame.pack(padx=10, pady=10)
-        boton_seleccionar_archivo = Button(
-            self.archivo_frame, text='Selecciona', command=self.seleccionar_archivo)
-        self.label_archivo = Label(
-            self.archivo_frame, text='', highlightbackground="grey", highlightthickness=2,  width=50)
-
-        boton_seleccionar_archivo.pack(side="left", pady=10)
-        self.label_archivo.pack(side="left", pady=10, fill=BOTH)
-        self.boton_extraer = Button(
-            self.archivo_frame, text='Extraer texto', command=self.extraer_texto)
-        self.boton_extraer.pack(side='left')
-        self.boton_extraer_archivo = Button(
-            self.archivo_frame, text='Extraer texto a archivo', command=self.extraer_texto_archivo)
-        self.boton_extraer_archivo.pack(side='left', expand=True)
+         # Controles de archivo:
+        self.add_marco_controles_archivo()
 
         # Barra de progreso:
-        self.pie_frame = Frame(self)
-        self.pie_frame.pack(pady=10, padx=10)
-
-        self.progress_bar = Progressbar(
-            self.pie_frame, orient="horizontal", length=400, mode="determinate")
-        self.progress_bar.pack(pady=10, fill="x")
-        self.label_pie = Label(self.pie_frame, text='', width=100)
-        self.label_pie.pack()
+        self.add_barra_progreso()
 
         # Marco medio
+        self.add_marco_medio()
+
+    def add_marco_medio(self):
         self.medio_frame = Frame(self)
         self.medio_frame.pack(pady=10, padx=15, fill='both', expand=True)
 
@@ -124,6 +105,33 @@ class Gui(Frame):
         self.resultado.bind('<Button-3><ButtonRelease-3>', self.show_menu)
         self.resultado.tag_config(
             'sel', background="black", foreground="white")
+
+    def add_barra_progreso(self):
+        self.pie_frame = Frame(self)
+        self.pie_frame.pack(pady=10, padx=10)
+
+        self.progress_bar = Progressbar(
+            self.pie_frame, orient="horizontal", length=400, mode="determinate")
+        self.progress_bar.pack(pady=10, fill="x")
+        self.label_pie = Label(self.pie_frame, text='', width=100)
+        self.label_pie.pack()
+
+    def add_marco_controles_archivo(self):
+        self.archivo_frame = Frame(self)
+        self.archivo_frame.pack(padx=10, pady=10)
+        boton_seleccionar_archivo = Button(
+            self.archivo_frame, text='Selecciona', command=self.seleccionar_archivo)
+        self.label_archivo = Label(
+            self.archivo_frame, text='', highlightbackground="grey", highlightthickness=2,  width=50)
+
+        boton_seleccionar_archivo.pack(side="left", pady=10)
+        self.label_archivo.pack(side="left", pady=10, fill=BOTH)
+        self.boton_extraer = Button(
+            self.archivo_frame, text='Extraer texto', command=self.extraer_texto)
+        self.boton_extraer.pack(side='left')
+        self.boton_extraer_archivo = Button(
+            self.archivo_frame, text='Extraer texto a archivo', command=self.extraer_texto_archivo)
+        self.boton_extraer_archivo.pack(side='left', expand=True)
 
     def seleccionar_todo(self):
         self.resultado.tag_add("sel", "1.0", "end")
@@ -172,12 +180,13 @@ class Gui(Frame):
             if not texto.strip():
                 texto = self._img_texto.extraer(self._ruta_archivo)
                 self.resultado.insert('insert', texto)
-            text_file = conf.DIR_SALIDA+self.fichero.marca_temporal()+'_' + \
+            dir_salida = self.fichero.obtener_directorio(conf.DIR_SALIDA)    
+            text_file = dir_salida+self.fichero.marca_temporal()+'_' + \
                 conf.NOMBRE_ARCHIVO_TEXTO
             self.fichero.escribir_archivo_texto(text_file, texto)
             self.progress_bar["value"] = 100
             self.label_pie['text'] = 'El archivo se ha creado en ' + \
-                conf.DIR_APP+os.path.sep + text_file
+                self.fichero.obtener_ruta_absoluta(text_file)
 
     def barra_progreso_callback(self, valor=10):
         # TODO: Mejorar transición..
@@ -190,13 +199,14 @@ class Gui(Frame):
     def seleccionar_archivo(self):
         # Muestra el diálogo de selección de archivos
         self.inicializar_controles()
-        self._ruta_archivo = askopenfilename(initialdir=conf.DIR_IMA)
+        dir_ima = self.fichero.obtener_directorio(conf.DIR_IMA)
+        self._ruta_archivo = askopenfilename(initialdir=dir_ima)
         self.label_archivo['text'] = self._ruta_archivo
         if self._ruta_archivo:
             try:
                 imagen = ImagePIL.open(self._ruta_archivo)
                 self.imagen_original_size = imagen.size
-                self.image = self.redimensionar_img(imagen)
+                self.image = self._img_texto.redimensionar_img(imagen)
                 self.wazil, self.lard = self.image.size
                 self.canvas.config(scrollregion=(0, 0, self.wazil, self.lard))
                 self.tk_image = ImageTk.PhotoImage(self.image)
@@ -232,19 +242,3 @@ class Gui(Frame):
     def on_button_release(self, event):
         pass
 
-    def redimensionar_img(self, img):
-        # Tamaño del canvas TODO: parametrizar
-        canvas_size = (300, 600)
-
-        # Se calcula el factor de reescalado para el ancho y el alto
-        factor_ancho = float(canvas_size[0]) / float(img.size[0])
-        factor_alto = float(canvas_size[1]) / float(img.size[1])
-
-        # Se usa el más pequeño
-        factor = min(factor_ancho, factor_alto)
-
-        # Se rediemnsiona la imagen
-        redimensionado = (int(img.size[0] * factor), int(img.size[1] * factor))
-        nueva_img = img.resize(redimensionado, ImagePIL.ANTIALIAS)
-
-        return nueva_img
