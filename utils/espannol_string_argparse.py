@@ -1,9 +1,7 @@
 import gettext 
-import os
-from dotenv import load_dotenv
-load_dotenv() 
+
 localedir = 'locale'
-lang = os.getenv('IDIOMA', 'es')
+lang = 'es'
 
 t = gettext.translation('programa', localedir, [lang], fallback=True)
 _ = t.gettext
