@@ -3,8 +3,18 @@ Extractor simple del texto de una imagen, permite ejecutarse en modo consola o m
 
 # Requisitos
  Python 3.
+
+ Como motor de ORC requiere Tesseract:
  
- Si se quiere usar la interfaz gráfica se requiere «tkinter».    
+  En linux se puede instalar con apt-get o el gestor de paquetes correspondiente, por ejemplo:
+```
+ sudo apt-get install tesseract-ocr
+ ```
+En «windows» se puede descargar desde:
+ ![Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
+ 
+ 
+ Para la interfaz gráfica se requiere «tkinter».    
  En linux se puede instalar con apt-get o el gestor de paquetes correspondiente, por ejemplo:
 ```
  sudo apt-get install python3-tk
