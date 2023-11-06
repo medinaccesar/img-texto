@@ -38,6 +38,6 @@ class ImgTexto():
 
         # Se rediemnsiona la imagen
         redimensionado = (int(img.size[0] * factor), int(img.size[1] * factor))
-        nueva_img = img.resize(redimensionado, Image.ANTIALIAS)
-
+        nueva_img = img.resize(redimensionado)
+    
         return nueva_img
