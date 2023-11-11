@@ -31,7 +31,7 @@ Se instalan las dependencias establecidas en el setup:
 ```
 Uso: img_texto.py [-h] [-e ARCHIVO | -g] [--version]
 
-img-texto 1.0.0
+img-texto 1.2.3
 
 argumentos opcionales:
   -h, --help            muestra este mensaje de ayuda y sale
