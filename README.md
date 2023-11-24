@@ -58,6 +58,6 @@ o bien:
 python  img_texto.py 
 ```
 
-# Ejecutable para linux ubuntu
+# Ejecutables para linux ubuntu y windows
 
-Se encuentra en la carpeta «dist».
+Se encuentran en la carpeta «dist».
