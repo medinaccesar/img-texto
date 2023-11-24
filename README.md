@@ -31,7 +31,7 @@ Se instalan las dependencias establecidas en el setup:
 ```
 Uso: img_texto.py [-h] [-e ARCHIVO | -g] [--version]
 
-img-texto 1.2.4
+img-texto 1.3.0
 
 argumentos opcionales:
   -h, --help            muestra este mensaje de ayuda y sale
@@ -54,5 +54,10 @@ El texto se ha extraído con éxito en el archivo: 231101_220117_salida.txt
 ```
 ## Ejecutar en modo gráfico
 python  img_texto.py -g
+o bien:
+python  img_texto.py 
 ```
 
+# Ejecutable para linux ubuntu
+
+Se encuentra en la carpeta «dist».
