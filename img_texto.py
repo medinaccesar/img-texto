@@ -56,16 +56,11 @@ class Main():
     def _procesar_argumentos(self, parser):
 
         args = parser.parse_args()
-        if args.gui:
-            # TODO: resolver dónde preguntar la contraseña en GUI
-            self._ejecutar_gui()
+        if args.extraer:
+            self._ejecutar_modo_consola(args)
         else:
-
-            if args.extraer:
-                self._ejecutar_modo_consola(args)
-            else:
-                print('Opción no permitida')
-
+            self._ejecutar_gui()
+            
 
 if __name__ == "__main__":
 
