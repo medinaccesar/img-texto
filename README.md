@@ -13,7 +13,8 @@ Extractor simple del texto de una imagen, permite ejecutarse en modo consola o m
 En «windows» se puede descargar desde:
  ![Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
 
- Tras instalarlo, en «windows» es preciso meterlo en las variables de entorno.
+ IMPORTANTE: Tras instalar Tesseract en «windows», es preciso meterlo en las variables de entorno.
+
  
  Para la interfaz gráfica se requiere «tkinter».    
  En linux se puede instalar con apt-get o el gestor de paquetes correspondiente, por ejemplo:
