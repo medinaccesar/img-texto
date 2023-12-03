@@ -4,7 +4,7 @@ Extractor simple del texto de una imagen, permite ejecutarse en modo consola o m
 # Requisitos
  Python 3.
 
- Como motor de ORC requiere Tesseract:
+ Como motor de OCR requiere Tesseract:
  
   En linux se puede instalar con apt-get o el gestor de paquetes correspondiente, por ejemplo:
 ```
